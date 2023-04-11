@@ -13,14 +13,14 @@ ansible-galaxy collection list
 docker-compose up -d
 ```
 
-# Test infra
-```shell
-ansible -m ping -i hosts.yaml all
-```
-
 # encrypt secrets (set password: secret)
 ```shell
 ansible-vault encrypt inventory/group_vars/all/original.values.yaml --output inventory/group_vars/all/values.yaml 
+```
+
+# Test infra
+```shell
+ansible --ask-vault-pass -m ping -i inventory/inventory.yaml all
 ```
 
 # generate certificates (password: secret)
