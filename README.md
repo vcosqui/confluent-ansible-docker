@@ -18,12 +18,12 @@ docker-compose up -d
 ansible -m ping -i hosts.yaml all
 ```
 
-# run west playbook (password: secret)
+# encrypt secrets (set password: secret)
 ```shell
-ansible-playbook --ask-vault-pass playbook_west.yaml -i hosts.yaml
+ansible-vault encrypt inventory/group_vars/all/original.values.yaml --output inventory/group_vars/all/values.yaml 
 ```
 
-# run all playbook (password: secret)
+# generate certificates (password: secret)
 ```shell
-ansible-playbook --ask-vault-pass playbook.yaml -i hosts.yaml
+ ansible-playbook --ask-vault-pass certs/cert-playbook.yaml -i inventory/inventory.yaml
 ```
